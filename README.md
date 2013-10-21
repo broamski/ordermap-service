@@ -6,6 +6,9 @@ This application is a RESTful service that consumes semi-generic Postal Code add
 The primary address data source for this service is Splunk, but it could easily be adapted to consume from additional services. This can be used as the back end
 for eCommerce sites, or similar, to plot customer latitude and longitude on a map solution of their choice.
 
+Splunk is polled on an interval, which is defined in the config.properties file, and stores the results in a Singleton that the REST resource accesses. This resource is purged on each roll
+as to represent real time streaming data.
+
 #### Requirements
 
 This requires the Splunk Java SDK. All other dependencies are managed via Maven.
@@ -37,3 +40,7 @@ requestTimeMS: "0",
 		}
 	]
 }
+
+## How would I use this?
+
+This service could be interval polled via client side AJAX, plotting each result on a map.
